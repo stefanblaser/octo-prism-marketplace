@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-09T00:00:00Z",
+  "generatedAt": "2026-04-09T09:48:52+00:00",
   "packages": [
     {
       "packageId": "ch.payslip",
@@ -8,7 +8,11 @@
       "version": "1.0",
       "language": "de",
       "region": "CH",
-      "tags": ["hr", "payroll", "payslip"],
+      "tags": [
+        "hr",
+        "payroll",
+        "payslip"
+      ],
       "author": "OCTO Prism Team",
       "fieldCount": 11,
       "tableCount": 0,
@@ -21,7 +25,11 @@
       "version": "1.0",
       "language": "de",
       "region": "DE",
-      "tags": ["finance", "accounting", "invoice"],
+      "tags": [
+        "finance",
+        "accounting",
+        "invoice"
+      ],
       "author": "OCTO Prism Team",
       "fieldCount": 10,
       "tableCount": 1,
@@ -34,7 +42,11 @@
       "version": "1.0",
       "language": "en",
       "region": null,
-      "tags": ["finance", "retail", "receipt"],
+      "tags": [
+        "finance",
+        "retail",
+        "receipt"
+      ],
       "author": "OCTO Prism Team",
       "fieldCount": 5,
       "tableCount": 0,
