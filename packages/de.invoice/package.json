@@ -1,0 +1,40 @@
+{
+  "packageId": "de.invoice",
+  "name": "German Invoice (Rechnung)",
+  "description": "Standard German invoice with line items and VAT breakdown",
+  "version": "1.0",
+  "language": "de",
+  "region": "DE",
+  "tags": ["finance", "accounting", "invoice"],
+  "author": "OCTO Prism Team",
+  "fields": [
+    { "name": "InvoiceNumber", "dataType": "String", "description": "Invoice document number (Rechnungsnummer)" },
+    { "name": "InvoiceDate", "dataType": "Date", "format": "DD.MM.YYYY" },
+    { "name": "DueDate", "dataType": "Date", "format": "DD.MM.YYYY", "description": "Payment due date, if stated on the invoice" },
+    { "name": "VendorName", "dataType": "String", "description": "Seller company name" },
+    { "name": "VendorVatId", "dataType": "String", "description": "Seller VAT identification number (USt-IdNr.)" },
+    { "name": "CustomerName", "dataType": "String", "description": "Billed party / buyer name" },
+    { "name": "TotalNet", "dataType": "Decimal", "format": "€", "description": "Net total before VAT" },
+    { "name": "VatAmount", "dataType": "Decimal", "format": "€", "description": "VAT amount (Umsatzsteuer)" },
+    { "name": "TotalGross", "dataType": "Decimal", "format": "€", "description": "Gross total including VAT" },
+    { "name": "Iban", "dataType": "String", "description": "Bank account IBAN for payment" }
+  ],
+  "tables": [
+    {
+      "name": "LineItems",
+      "description": "Individual invoice line items",
+      "sortOrder": 1,
+      "columns": [
+        { "name": "Position",    "dataType": "Integer", "isKey": true,  "sortOrder": 1, "description": "Line number" },
+        { "name": "Description", "dataType": "String",  "isKey": false, "sortOrder": 2 },
+        { "name": "Quantity",    "dataType": "Integer", "isKey": false, "sortOrder": 3 },
+        { "name": "UnitPrice",   "dataType": "Decimal", "isKey": false, "sortOrder": 4, "format": "€" },
+        { "name": "TotalPrice",  "dataType": "Decimal", "isKey": false, "sortOrder": 5, "format": "€" }
+      ]
+    }
+  ],
+  "meta": {
+    "recommendedStrategy": "Vision",
+    "promptHints": "Amounts use the Euro symbol (€). Dates are in DD.MM.YYYY format. Invoice numbers may mix letters and digits. VAT is typically 7% or 19% in Germany."
+  }
+}

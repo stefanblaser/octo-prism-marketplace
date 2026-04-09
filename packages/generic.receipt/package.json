@@ -1,0 +1,20 @@
+{
+  "packageId": "generic.receipt",
+  "name": "Generic Receipt",
+  "description": "Basic retail or service receipt with vendor, date, and total amount — region-agnostic",
+  "version": "1.0",
+  "language": "en",
+  "tags": ["finance", "retail", "receipt"],
+  "author": "OCTO Prism Team",
+  "fields": [
+    { "name": "VendorName",    "dataType": "String" },
+    { "name": "ReceiptDate",   "dataType": "Date", "description": "Date of purchase as printed on the receipt" },
+    { "name": "ReceiptNumber", "dataType": "String", "description": "Receipt or transaction reference number if present" },
+    { "name": "TotalAmount",   "dataType": "Decimal", "description": "Total amount paid — include currency symbol if present in the example" },
+    { "name": "PaymentMethod", "dataType": "String",  "description": "Cash, card, or other payment method", "enumValues": ["Cash", "Card", "Mobile", "Other"] }
+  ],
+  "meta": {
+    "recommendedStrategy": "Vision",
+    "promptHints": "Generic receipt — currency, date format, and language may vary. Extract what is printed literally; prefer the amount nearest to the words 'total' or 'sum' for TotalAmount."
+  }
+}

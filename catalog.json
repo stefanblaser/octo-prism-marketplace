@@ -1,0 +1,44 @@
+{
+  "generatedAt": "2026-04-09T00:00:00Z",
+  "packages": [
+    {
+      "packageId": "ch.payslip",
+      "name": "Swiss Payslip (Lohnabrechnung)",
+      "description": "Swiss monthly payslip with gross-to-net breakdown, social security deductions, and employer details",
+      "version": "1.0",
+      "language": "de",
+      "region": "CH",
+      "tags": ["hr", "payroll", "payslip"],
+      "author": "OCTO Prism Team",
+      "fieldCount": 11,
+      "tableCount": 0,
+      "lastUpdated": "2026-04-09"
+    },
+    {
+      "packageId": "de.invoice",
+      "name": "German Invoice (Rechnung)",
+      "description": "Standard German invoice with line items and VAT breakdown",
+      "version": "1.0",
+      "language": "de",
+      "region": "DE",
+      "tags": ["finance", "accounting", "invoice"],
+      "author": "OCTO Prism Team",
+      "fieldCount": 10,
+      "tableCount": 1,
+      "lastUpdated": "2026-04-09"
+    },
+    {
+      "packageId": "generic.receipt",
+      "name": "Generic Receipt",
+      "description": "Basic retail or service receipt with vendor, date, and total amount — region-agnostic",
+      "version": "1.0",
+      "language": "en",
+      "region": null,
+      "tags": ["finance", "retail", "receipt"],
+      "author": "OCTO Prism Team",
+      "fieldCount": 5,
+      "tableCount": 0,
+      "lastUpdated": "2026-04-09"
+    }
+  ]
+}

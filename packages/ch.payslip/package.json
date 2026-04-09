@@ -1,0 +1,27 @@
+{
+  "packageId": "ch.payslip",
+  "name": "Swiss Payslip (Lohnabrechnung)",
+  "description": "Swiss monthly payslip with gross-to-net breakdown, social security deductions, and employer details",
+  "version": "1.0",
+  "language": "de",
+  "region": "CH",
+  "tags": ["hr", "payroll", "payslip"],
+  "author": "OCTO Prism Team",
+  "fields": [
+    { "name": "EmployeeName",    "dataType": "String" },
+    { "name": "EmployeeNumber",  "dataType": "String", "description": "Internal employee identifier" },
+    { "name": "PayPeriodStart",  "dataType": "Date",    "format": "DD.MM.YYYY" },
+    { "name": "PayPeriodEnd",    "dataType": "Date",    "format": "DD.MM.YYYY" },
+    { "name": "EmployerName",    "dataType": "String" },
+    { "name": "GrossSalary",     "dataType": "Decimal", "format": "CHF", "description": "Total gross salary before deductions" },
+    { "name": "AhvIvEoDeduction","dataType": "Decimal", "format": "CHF", "description": "AHV/IV/EO social security deduction (employee share)" },
+    { "name": "AlvDeduction",    "dataType": "Decimal", "format": "CHF", "description": "ALV unemployment insurance deduction" },
+    { "name": "BvgDeduction",    "dataType": "Decimal", "format": "CHF", "description": "Berufliche Vorsorge (BVG) pension contribution" },
+    { "name": "NbuDeduction",    "dataType": "Decimal", "format": "CHF", "description": "Non-occupational accident insurance deduction (if applicable)" },
+    { "name": "NetSalary",       "dataType": "Decimal", "format": "CHF", "description": "Net payout after all deductions" }
+  ],
+  "meta": {
+    "recommendedStrategy": "Vision",
+    "promptHints": "Swiss payslips use CHF currency and DD.MM.YYYY date format. AHV/IV/EO and ALV are mandatory social insurance deductions. BVG (pension) depends on the employer plan and may be zero for employees under 25."
+  }
+}

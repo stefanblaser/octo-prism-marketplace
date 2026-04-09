@@ -1,0 +1,66 @@
+name: Regenerate catalog.json
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/**/package.json'
+      - '.github/workflows/regenerate-catalog.yml'
+  workflow_dispatch:
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate catalog.json
+        run: |
+          python3 <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          packages = []
+          for pkg_dir in sorted(Path('packages').iterdir()):
+              if not pkg_dir.is_dir():
+                  continue
+              pkg_file = pkg_dir / 'package.json'
+              if not pkg_file.exists():
+                  continue
+              with pkg_file.open(encoding='utf-8') as f:
+                  pkg = json.load(f)
+              packages.append({
+                  'packageId':   pkg['packageId'],
+                  'name':        pkg['name'],
+                  'description': pkg['description'],
+                  'version':     pkg['version'],
+                  'language':    pkg['language'],
+                  'region':      pkg.get('region'),
+                  'tags':        pkg.get('tags'),
+                  'author':      pkg.get('author'),
+                  'fieldCount':  len(pkg.get('fields', [])),
+                  'tableCount':  len(pkg.get('tables') or []),
+                  'lastUpdated': datetime.now(timezone.utc).strftime('%Y-%m-%d'),
+              })
+
+          catalog = {
+              'generatedAt': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+              'packages':    packages,
+          }
+          with open('catalog.json', 'w', encoding='utf-8') as f:
+              json.dump(catalog, f, indent=2, ensure_ascii=False)
+              f.write('\n')
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          if ! git diff --quiet catalog.json; then
+            git add catalog.json
+            git commit -m "chore: regenerate catalog.json"
+            git push
+          fi
